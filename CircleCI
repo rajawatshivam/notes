@@ -1,0 +1,6 @@
+CI
+Continuous integration
+Integration test(we don't mock)
+CI server is configured with github
+CI server will start a build process.Get the code base clone it. Build pass or fail
+circle CI, Jenkins jobs

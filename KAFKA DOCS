@@ -1,0 +1,11 @@
+                                       
+
+                                          KAFKA DOCS
+https://www.apache.org/dyn/closer.cgi?path=/kafka/2.0.0/kafka_2.11-2.0.0.tgz
+
+ COMMANDS
+sudo bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
+sudo bin/kafka-server-start.sh -daemon config/server.properties
+sudo bin/kafka-topics.sh --list --zookeeper localhost:2181
+sudo bin/kafka-topics.sh --list --zookeeper localhost:2181
+

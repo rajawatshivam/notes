@@ -1,0 +1,18 @@
+Logging framework::
+
+sl4j, logback,log4j
+
+Destination create logging in some file.
+ 
+3 componenets:
+
+Logger,Appender,Layout
+
+Get the logger object and get some appender(ex: file,console,rollingfile(we specify size of file) appender)
+Levels::: Fatal , Error, Warn, Info, debug, trace..  ON/OFF for levels
+if we say logging level=debug (Fatal , Error, Warn, Info, debug)then we mean all till debug is logged.
+
+HOW TO DO:::
+1) Get hold of logger.
+2)In conf file we will specify logging level.
+

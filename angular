@@ -1,0 +1,140 @@
+Angular
+
+Modularity
+Isolation
+Component structure
+React is a library and angular is a ramework
+Rest Template is used to interact btw 2 java program using rest.
+Angular follows component/Modules based architecture.
+Modules comprises of components(will does only one task)
+In angular we have HTML+CSS+JS together as a componenet and multiple component is module.
+
+ng new projectName
+ng serve
+ng g c componentName -it -is // for inline template and style.
+ng g c test  // g for generate and c for component
+lsof -i:8080  //To see the PID of the port
+kill -9 $(lsof -t -i:4201) //
+
+Components Criteria
+
+Modularity
+Reusablility
+Testability
+SRP
+
+Stateful(Intelligent)  stateless
+
+                                                               SELECTOR
+
+We can also use selector as a class by using .app-test   in .ts file
+And where you want to call the component use <div class="app-test">
+We can also use in square bracket and directly use selector name in div tag
+
+HOW TO USE INLINE TEMPLATES
+just use template and style instead of templateURL and styleURL
+Use backticks(`) instead of single qoutes
+
+                                                              INTERPOLATION
+We can bind data from class to template..
+
+ template: `<div>   
+             Welcome {{name}} to inline HTML
+             
+             </div>`,
+  styleUrls: ['./binding-component.component.css']
+})
+export class BindingComponentComponent implements OnInit {
+  
+  public name ="AbhishekSingh";
+
+                                                             PROPERTY BINDING
+
+Attribute value vs Property
+
+Attribute are defined by HTML once we defined the value in html tag for the inputtype then it won't change despite we change in HTML page.
+Property value are of DOM it can change multiple times.
+
+We can also use interpolation for the property binding but it is only limited to string values;
+for boolean use property binding as [disabled]=false;
+
+                                                           Structural Directives
+Add or remove HTML elements from the DOM.
+
+            <div *ngIf="displayName2; then thenBlock; else elseBlock"></div>
+
+            <ng-template #thenBlock>
+              <h2> if block case</h2>
+            </ng-template>
+
+            <ng-template #elseBlock>
+              <h2> else Block</h2>
+            </ng-template>
+
+
+                                      COMPONENT INTERACTION
+
+Using @Input child will take input from the parent(easy to do as we have child tag in parent HTML)
+Using @Output parent will take output from the child(we have to use event to sent data from child to parent)
+
+
+
+
+
+                                                     PIPES 
+Pipes are used to transform data before using in views.
+
+                                                    SERVICES
+if we need to display same employee details in 2 component then in each component class we have to define employee object and use in template but this is not a good practice what we need to do is  to create a service from which we will take the data of the employee.
+BY copying in two component we are voilating SRP and DRY..
+A class with a specific purpose.
+share data
+implement application logic
+external interaction
+
+ HOW TO MAKE OUR SERVICES::
+1)Define employee class
+2) Register with injector-- We should register our service in module level.We register in provider metadata in module.
+3) Declare as dependency in component where we want to use that. We should declare in constructor of the components.
+   we should make use of service instance in lifecycle hook.
+
+@Injectable decorator use?? This shows that we have injected some dependecy of other service into this service. Dependency of one service into other service. But in component we have @component dependency which will tell the component that it might have some dependency in future.
+
+
+                                                         HTTP AND OBSERVABLES
+In our Services we were hardcoding our employee data into services but in real world app we will request a http method to fetch our data.
+Basically a employeeService will make a get request to the webAPI or db to fetch the data. Once we got the data it will come in observables
+OBSERVABLES sequence of item that arrives in asynchronously. Once we get the observables we have to convert that in employee array.And we only provides this data to the component which subscribe to it.
+
+We use HTTPCLient module to get the get request from service. Once we get the request our component needs to subscirbe to it in order to get the response.
+
+                                                          HTTP ERROR HANDLING
+We get the response in form of observables hence to handle error we use catch operator.
+
+
+  getEmployees(): Observable<IEmployee[]>{
+    return this.http.get<IEmployee[]>(this._url)
+                       .catchError(new Error(this.errorHandler);
+  }
+  errorHandler(error: HttpErrorResponse){
+    return observable.throw(error.message || "server error");
+Use the same in componenets which subscribe the service.
+
+                                                             Routing and Navigation in Angular
+Routing - To navigate between different views of our component.
+How to create a normal angular project to the routing project??
+1)Index.html inside head tag use   <base href="/"> inorder to construct the url during navigation.
+2) Add routing-module.ts in app module to configure different routes here.
+3) Import app-routing-module.ts in module.ts so that it becomes the part of routing module.
+
+Once we create the components now in route-module.ts specify the url path in constant route and name of the component renders for the URL.
+Make a common import for various router components.
+Our router views goes in router-outlet
+
+WILDCARD ROUTES
+If user tries to enter a link which doesn't have any routes we should take him to a 404 not found page.
+
+                                                              ROUTE PARAMETERS
+s
+
+

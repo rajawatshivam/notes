@@ -1,0 +1,84 @@
+                                                            MONGODB
+ 
+
+    WIKI
+https://docs.mongodb.com/manual/reference/method/db.createUser/     (user role and authentication)
+https://www.youtube.com/watch?v=pWbMrx5rVBE                         (video url)
+
+
+                                                           COMMANDS
+
+show dbs            (show all db list)
+use dbName          (create a db and switch to that)
+db                  (tells your present data you are in)
+
+db.createUser({
+  user:"abhi",
+  pwd :"abhi14563200",                      (Create user for a db and give him access) 
+  roles: [ "readWrite", "dbAdmin" ]
+  }
+)
+ 
+db.createCollection('customers');
+show collections;
+db.customers.insert({first_name:"abhishek",last_name:"singh"});
+db.customers.find();
+db.customers.insert([{first_name:"raj",last_name:"mathur"},                       (Add extra fields to any object anytime beauty of mongo)
+                     {first_name:"summit",last_name:"awasthi",age:"30"}
+                    ]);
+db.customers.find().pretty();                   (Display results in clearner format)
+
+                                                  
+                                                       UPDATE function--
+
+db.customers.update({first_name:"abhishek"},{first_name:"abhishek",last_name:"kumar",age:"24"}); (first parameter is which field to update and                                                                                             next is entire object to be updated as we want)
+
+db.customers.update({first_name:"raj"},{$set:{gender:"male"}});   (Only changes field we want don't need to write complete object)
+db.customers.update({first_name:"abhishek"},{$set:{salary: 40}}); (Add an integer field to abhishek)
+db.customers.update({first_name:"abhishek"},{$inc:{salary: 5}});  (Incrementing integer values)
+db.customers.update({first_name:"abhishek"},{$unset:{salary:1}}); (Remove a field from the object we can use any value after salary:anything)
+db.customers.update({first_name:"NewValue"},{first_name:"newValue",last_name:"newValue"}); (Update in values not present will have no effect)
+
+db.customers.update({middle_name:"NewValue"},{first_name:"newValue",middle_name:"kumar",last_name:"newValue"},{upsert:true}); (insert new value and update it,we can also use new fields in first parameter it will create object accordingly);
+
+db.customers.update({first_name:"abhishek"},{$rename:{"salary":"income"}});  (Rename the field name)
+
+db.customers.remove({first_name:"NewValue"});                                              (Remove all object field with firstName:NewValue)
+db.customers.remove({first_name:"NewValue"},{justOne:true});                               (Remove only first field with NewValue)
+db.customers.find({first_name:"abhishek"})                                                 (find specific object)
+db.customers.find({$or:[{first_name:"abhishek"},{first_name:"raj"}]});                     (Find multiple fields with or operator)
+db.customers.find({age:{$lt:40}});                                                         (all fields with age less than 40)
+db.customers.find({age:{$gt:40}});                                                         (all fields with age greater than 40)
+db.customers.find({age:{$lte:40}});                                                        (all fields with age less than and equal to 40)
+db.customers.find({"address.city":"Boston"})                                               (address is an object inside customers with city) 
+db.customers.find({memberShip:"mem1"});                                                    (membership is an array and mem1 is an object inside
+db.customers.find().sort({last_name:1});                                                   (sort in ascending order of last name)
+db.customers.find().sort({last_name:-1});                                                  (sort in descending order of last name)
+db.customers.find().count();                                                               (count all and give integer value)
+db.customers.find({gender:"male"}).count();                                                (count all male values)
+db.customers.find().limit(4);                                                              (display 4 values)
+db.customers.find().limit(4).sort({last_name:1});                                          (sort among first 4)
+db.customers.find().forEach(function(doc){print("First_Name: "+doc.first_name)});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
