@@ -250,3 +250,25 @@ e8298432a83c        demo-config-service   "java -jar /src/cent…"   7 minutes a
 1203d1c870e9        mongo                 "docker-entrypoint.s…"   6 days ago          Up 4 seconds             0.0.0.0:27000->27017/tcp   mongocontainer
 abhishek@abhishek-bg1:~/Documents/myGitHubResources/spring-boot-cloud-native$ 
 
+
+
+
+
+
+
+
+
+
+
+
+create an image and push
+
+sudo docker build -t (name):(if version) .
+sudo docker run -it --rm -p 4200:4200 -v ${pwd}/src:/app/src(for volume mapping) (name)
+
+now to push image to docker
+sudo docker login --username meghnanvt
+sudo docker build -t movieApp:1.0   .
+sudo docker tag imageid username/movieapp:1.0
+sudo docker push username/movieapp:1.0
+sudo docker images

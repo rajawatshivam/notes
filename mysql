@@ -1,0 +1,3 @@
+sudo docker run -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=true -v /home/user/mysql:/var/lib/mysql -d mysql:5.5
+
+sudo docker exec -it  trusting_haibt mysql -u root -p

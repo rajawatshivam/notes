@@ -63,6 +63,8 @@ db.customers.find().forEach(function(doc){print("First_Name: "+doc.first_name)})
 
 
 
+sudo docker exec -it [[mongo_container]] mongo 
+
 
 
 

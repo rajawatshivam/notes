@@ -138,3 +138,29 @@ If user tries to enter a link which doesn't have any routes we should take him t
 s
 
 
+
+
+
+
+
+Angular dockerisation\
+
+for referal  without nginx
+https://blogs.msmvps.com/theproblemsolver/2017/04/17/developing-angular-applications-using-docker/
+
+FROM node:6.10.2-alpine
+   2:
+   3: RUN mkdir -p /app
+   4: WORKDIR /app
+   5:
+   6: COPY package.json /app/
+   7:
+   8: RUN ["npm", "install"]
+   9:
+  10: COPY . /app
+  11:
+  12: EXPOSE 4200/tcp
+  13:
+  14: CMD ["npm", "start", "--", "--host", "0.0.0.0", "--poll", "500"]
+
+

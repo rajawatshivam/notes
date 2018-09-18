@@ -9,3 +9,6 @@ sudo bin/kafka-server-start.sh -daemon config/server.properties
 sudo bin/kafka-topics.sh --list --zookeeper localhost:2181
 sudo bin/kafka-topics.sh --list --zookeeper localhost:2181
 
+
+
+sudo systemctl start kafka
